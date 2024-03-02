@@ -9,6 +9,7 @@ const getJobs = async () => {
   return res.json()
 }
 
+
 export default async function JobListing() {
 
   const { jobs } = await getJobs()
@@ -23,12 +24,11 @@ export default async function JobListing() {
             </div>
             </div>
             <div>
-              <RemoveBtn />
+              <RemoveBtn id={job._id}/>
               <Link href={`/editJob/${job._id}`}>Edit</Link>
             </div>
           </div>
           ))}
-      
     </>
   );
 }
