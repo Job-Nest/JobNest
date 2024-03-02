@@ -12,7 +12,6 @@ export async function POST(request) {
 export async function GET(request) {
   await connectMongoDB();
   const jobs = await Job.find();
-  // console.log("jobs:", jobs);
   return NextResponse.json({ jobs }, { status: 200 });
 }
 
