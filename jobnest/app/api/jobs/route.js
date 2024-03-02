@@ -11,8 +11,13 @@ export async function POST(request) {
 
 export async function GET(request) {
   await connectMongoDB();
-  const jobs = await Job.find();
-  return NextResponse.json({ jobs }, { status: 200 });
+  try {
+    const jobs = await Job.find();
+    return NextResponse.json({ jobs }, { status: 200 });
+  } catch (error) {
+    console.error('Error fetching jobs:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
 }
 
 export async function DELETE(request) {
