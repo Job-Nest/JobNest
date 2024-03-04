@@ -9,18 +9,18 @@ const getJobListings = async () => {
     const res = await fetch('http://localhost:3000/api/jobs', { cache: 'no-store' })
     const data = await res.json();
     const {jobs} = data;
-    console.log('Jobs:', jobs);
-    jobs.map(job => jobListings.push(
-      <div className='p-4 border border-slate-300 flex justify-between items-center' key={crypto.randomUUID}>
+    jobs.map(job => {
+      jobListings.push(
+      <div className='p-4 border border-slate-300 flex justify-between items-center' key={crypto.randomUUID()}>
         <div>
           {job.title} {job.company_name}
         </div>
         <div>
         <RemoveBtn />
-        <Link href={`/editJob/${job._id}`} >Edit</Link>
+        <Link href={`/editJob/${job._id}`}>Edit</Link>
         </div>
       </div>  
-      ))
+      )})
     }
     catch (err) {
       console.error('Unable to load job listings')
