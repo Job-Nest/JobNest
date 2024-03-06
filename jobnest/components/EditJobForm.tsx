@@ -3,15 +3,17 @@
 import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
+type HTMLInputType = React.FormEvent<HTMLFormElement>
+
 export default function EditJobForm() {
 
-  const [title, setTitle] = useState('');
-  const [company_name, setCompanyName] = useState('');
+  const [title, setTitle] = useState<string>('');
+  const [company_name, setCompanyName] = useState<string>('');
 
   const router = useRouter();
   const params = useParams();
 
-  const editJob = async (e) => {
+  const editJob = async (e: HTMLInputType) => {
     try{
       e.preventDefault();
       const data  = await fetch(`http://localhost:3000/api/jobs/${params.id}`, 

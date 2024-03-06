@@ -1,15 +1,22 @@
+import React, { ButtonHTMLAttributes } from 'react';
 import RemoveBtn from './RemoveBtn';
 import EditBtn from './EditBtn';
 import Link from 'next/link';
 
-const jobListings = [];
+interface Job {
+  title: string,
+  company_name: string,
+  _id: number
+}
+
+const jobListings: React.ReactElement<string>[] = [];
 
 const getJobListings = async () => {
   try {
     const res = await fetch('http://localhost:3000/api/jobs', { cache: 'no-store' })
     const data = await res.json();
     const {jobs} = data;
-    jobs.map(job => {
+    jobs.map((job: Job) => {
       jobListings.push(
       <div className='p-4 border border-slate-300 flex justify-between items-center' key={crypto.randomUUID()}>
         <div>
