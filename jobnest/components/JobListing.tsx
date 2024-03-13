@@ -36,7 +36,10 @@ const getJobListings = async () => {
 
 getJobListings();
 
-export default function JobListing() {
+export default async function JobListing() {
+
+  const { jobs } = await getJobs()
+
   return (
     <>
       <div className='p-4 border border-slate-300 flex justify-between items-center'>
