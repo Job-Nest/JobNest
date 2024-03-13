@@ -1,17 +1,19 @@
 'use client'
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+
+type HTMLInputType = React.FormEvent<HTMLFormElement>
 
 export default function EditJobForm() {
 
-  const [title, setTitle] = useState('');
-  const [company_name, setCompanyName] = useState('');
+  const [title, setTitle] = useState<string>('');
+  const [company_name, setCompanyName] = useState<string>('');
 
   const router = useRouter();
   const params = useParams();
 
-  const editJob = async (e) => {
+  const editJob = async (e: HTMLInputType) => {
     try{
       e.preventDefault();
       const data  = await fetch(`http://localhost:3000/api/jobs/${params.id}`, 
@@ -28,6 +30,7 @@ export default function EditJobForm() {
 
       if (data.status === 200){
         router.push('/')
+        router.refresh();
       } else {
         console.log('Unable to update job listing');
       }
