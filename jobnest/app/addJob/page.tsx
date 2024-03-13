@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 
 
@@ -23,6 +23,7 @@ export default function addJob() {
       if (response.ok) {
         router.push('/'); 
       }
+      router.refresh()
     } catch (error) {
       throw new Error("No job lol")
     }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
 type HTMLInputType = React.FormEvent<HTMLFormElement>
@@ -30,6 +30,7 @@ export default function EditJobForm() {
 
       if (data.status === 200){
         router.push('/')
+        router.refresh();
       } else {
         console.log('Unable to update job listing');
       }
