@@ -13,7 +13,7 @@ const jobListings: React.ReactElement<string>[] = [];
 
 const getJobListings = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/jobs', { cache: 'no-store' })
+    const res = await fetch('http://localhost:3000/api/jobs', { cache: 'no-store' });
     const data = await res.json();
     const {jobs} = data;
     jobs.map((job: Job) => {
