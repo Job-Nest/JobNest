@@ -13,7 +13,7 @@ export default function RemoveBtn({id}) {
   } 
   
     return (
-    <button onClick={deleteJobs}>Remove</button>
+    <button onClick={deleteJobs} className="px-2 py-1 text-blue-200 font-bold bg-blue-600 rounded-md hover:bg-blue-700 hover:text-blue-300">Remove</button>
     )
   }
   

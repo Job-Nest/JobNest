@@ -26,16 +26,17 @@ export default async function JobListing() {
     <>
           {jobs.map((job: Job) => (
             <div className='p-4 border border-slate-300 flex justify-between items-center'  key={crypto.randomUUID()}>
-              <div>
-                <div>
+              <>
+                
                  
-                    {job.title}, {job.company_name}
+                {job.date}, {job.title}, {job.company_name}, {job.last_action}, {job.source}, {job.app_url}
                  
-                </div>
-              </div>
+                
+              </>
               <div>
                 <RemoveBtn id={job._id} />
-                <Link href={`/editJob/${job._id}`}>Edit</Link>
+                <Link href={`/editJob/${job._id}`} >Edit</Link>
+            
               </div>
             </div>
           ))}
