@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+
 export default function Navbar() {
   return (
     <div className='flex justify-between items-center bg-blue-400 px-8 py-3'>
@@ -14,6 +15,8 @@ export default function Navbar() {
       <div className='flex gap-3 items-center text-blue-200 font-bold text-base'>
           <Link href='/dashboard' className="hover:text-lg">Dashboard</Link>
           <Link href='/addJob' className="hover:text-lg">Add Job</Link>
+
+         
         </div>
     </div>
   );

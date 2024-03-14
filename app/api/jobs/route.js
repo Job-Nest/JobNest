@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   const { title, company_name } = await request.json();
   await connectMongoDB();
-  await Job.create({ title, company_name });
+  await Job.create({ date, title, company_name, last_action, source, app_url });
   return NextResponse.json({ message: 'Job Created!' }, { status: 200 });
 }
 
